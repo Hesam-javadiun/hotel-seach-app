@@ -1,11 +1,12 @@
-export async function get(url: string, route: string, initalHeaders: Headers) {
+export async function get(url: string, route: string, initalHeaders?: Headers) {
+    const init = initalHeaders ?? {};
     const headers = new Headers({
         "Content-Type": "application/json",
-        ...initalHeaders,
+        ...init,
         // "bearer"
-    })
-    
-    const response = await fetch(url);
+    });
+
+    const response = await fetch(url, { headers });
 
     if (!response.ok) {
         throw new Error(
