@@ -21,7 +21,11 @@ export default async function RootLayout({
     const { locale } = await params;
 
     return (
-        <html lang={locale} dir={locale === "en" ? "ltr" : "rtl"}>
+        <html
+            lang={locale}
+            dir={locale === "en" ? "ltr" : "rtl"}
+            className="dark"
+        >
             <body>
                 <ClientProviders>{children}</ClientProviders>
             </body>

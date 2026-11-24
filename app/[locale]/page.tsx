@@ -4,6 +4,8 @@ import { getTranslations } from "next-intl/server";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import Hotels from "./components/hotels";
 import FiltersSortsSelectors from "./components/filters-sorts";
+
+
 export default async function HomePage() {
 
     const t = await getTranslations();
