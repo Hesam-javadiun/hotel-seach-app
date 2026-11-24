@@ -1,8 +1,9 @@
 import { ReactNode } from "react";
 import "../globals.css";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/lib/i18n/routing";
 import { notFound } from "next/navigation";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ClientProviders from "@/components/providers";
 
 type RootLayoutPropsType = {
     children: ReactNode;
@@ -18,14 +19,11 @@ export default async function RootLayout({
     params,
 }: RootLayoutPropsType) {
     const { locale } = await params;
-    // if (!hasLocale(routing.locales, locale)) {
-    //     notFound();
-    // }
 
     return (
         <html lang={locale} dir={locale === "en" ? "ltr" : "rtl"}>
             <body>
-                <NextIntlClientProvider>{children}</NextIntlClientProvider>
+                <ClientProviders>{children}</ClientProviders>
             </body>
         </html>
     );

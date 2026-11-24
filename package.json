@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.108.3",
     "next": "16.4.6",
     "next-intl": "^4.15.3",
     "react": "19.3.0",
