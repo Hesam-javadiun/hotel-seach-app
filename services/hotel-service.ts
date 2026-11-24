@@ -5,8 +5,9 @@ export async function get(url: string, route: string, initalHeaders?: Headers) {
         ...init,
         // "bearer"
     });
+    console.log("fetch called with url:", url,route, {headers})
+    const response = await fetch(`${url}${route}`, { headers });
 
-    const response = await fetch(url, { headers });
 
     if (!response.ok) {
         throw new Error(
@@ -15,6 +16,7 @@ export async function get(url: string, route: string, initalHeaders?: Headers) {
     }
 
     const data = await response.json();
+    console.log('data', data);
 
     return data;
 }
