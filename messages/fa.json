@@ -22,5 +22,9 @@
     "quality": "کیفیت",
     "selectQulity": "کیفیت هتل خود را انتخاب کنید",
     "selectCity": "شهر مورد نظر خود را انتخاب کنید",
-    "soringHeading": "مرتب سازی"
+    "soringHeading": "مرتب سازی",
+    "noHotel": "هتلی یافت نشد",
+    "entyHeading": "تاریخ ورود",
+    "exitHeading": "تاریخ خروج"
+
 }

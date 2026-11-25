@@ -10,7 +10,10 @@ import { RadioBtns } from "./radio-btns";
 import { SORT_KEY } from "@/enum/sort-key";
 import { ReactNode } from "react";
 import Loading from "@/components/loading";
-
+import {
+    toDateObject,
+    toISOString,
+} from "@/lib/react-multi-date-picker/date-picker";
 export default function FiltersSortsSelectors({
     children,
 }: {
@@ -36,7 +39,22 @@ export default function FiltersSortsSelectors({
         filter: sortKey,
         filterChangeHandler: changeSortKeyHandler,
         isPending: isSortingPending,
-    } = useFilterSearchParam({ filterKey: "_sort" });
+    } = useFilterSearchParam({ filterKey: "" });
+
+    /*     entryDate?: string;
+    exitDate?: string; */
+
+    const {
+        filter: entryDate,
+        filterChangeHandler: changeEntryDateHandler,
+        isPending: isEntryDateFilterPending,
+    } = useFilterSearchParam({ filterKey: "entryDate" });
+
+    const {
+        filter: exitDate,
+        filterChangeHandler: changeExitDateHandler,
+        isPending: isExitDateFilterPending,
+    } = useFilterSearchParam({ filterKey: "exitDate" });
 
     const qulityFilters = (
         <Selector
@@ -61,7 +79,7 @@ export default function FiltersSortsSelectors({
             // emptyLabel={t("emptySelector")}
         />
     );
-    console.log("object", [...Object.values(SORT_KEY), null]);
+
     const sortRadioBtns = (
         <>
             <p>{t("soringHeading")}</p>
@@ -77,17 +95,62 @@ export default function FiltersSortsSelectors({
         </>
     );
 
+    const entryDatePicker = (
+        <>
+            <p>{t("entyHeading")}</p>
+            <DatePicker
+                locale={locale}
+                /* @ts-ignore */
+                value={entryDate ? toDateObject(entryDate) : ""}
+                maxDate={exitDate ?? ""}
+                rangeHover={false}
+                className="dark"
+                onChange={(dateObj) =>
+                    changeEntryDateHandler(toISOString(dateObj))
+                }
+                
+            />
+        </>
+    );
+
+    const exitDatePicker = (
+        <>
+            <p>{t("exitHeading")}</p>
+            <DatePicker
+                locale={locale}
+                /* @ts-ignore */
+                value={exitDate ? toDateObject(exitDate) : ""}
+                minDate={entryDate ?? ""}
+                rangeHover={false}
+                className="dark"
+                onChange={(dateObj) =>
+                    changeExitDateHandler(toISOString(dateObj))
+                }
+            />
+        </>
+    );
+
     const isLoading =
         isQualitySearchPending || isCitySearchPending || isSortingPending;
+
     return (
         <>
-            <ul className="flex flex-col p-4 justify-center gap-4">
-                <div className="flex wrap p-4 justify-center gap-4">
-                    {qulityFilters}
-                    {cityFilters}
-                </div>
-                <div className="flex justify-center gap-4">{sortRadioBtns}</div>
-            </ul>
+            <div className="flex flex-col md:flex-row md:justify-center justify-start">
+                <ul className="flex flex-col p-4 justify-center gap-4 ">
+                    <div className="flex wrap p-4 justify-center gap-4">
+                        {qulityFilters}
+                        {cityFilters}
+                    </div>
+                    <div className="flex justify-center gap-4 ">
+                        {sortRadioBtns}
+                    </div>
+                </ul>
+                <ul className="flex justify-center flex-col gap-4 items-center md:items-stretch">
+                    {entryDatePicker}
+                    {exitDatePicker}
+                </ul>
+            </div>
+
             {isLoading ? <Loading message={t("fetching")} /> : children}
         </>
     );

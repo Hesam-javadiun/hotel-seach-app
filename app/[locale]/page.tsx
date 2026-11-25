@@ -37,12 +37,14 @@ export default async function SearchPage({
 
     const loading = <CustomLoading message={t("fetching")} />;
 
+    
+
     return (
         <div className="h-screen w-screen flex flex-col gap-4 bg-background text-foreground">
             <h1 className="text-center text-3xl mt-4">{t("title")}</h1>
             <FiltersSortsSelectors>
                 <Suspense fallback={loading}>
-                    <Hotels hotelDataPromise={hotelsPromise} />
+                    <Hotels hotelDataPromise={hotelsPromise} noHotelMessage={t("noHotel")}/>
                     {/* <HydrationBoundary
                     state={dehydrate(queryClient)}
                 ></HydrationBoundary> */}

@@ -22,5 +22,9 @@
     "quality": "quality",
     "selectQulity": "select quality",
     "selectCity": "select city",
-    "soringHeading": "sorting"
+    "soringHeading": "sorting",
+    "noHotel": "there is nothing to show",
+    "entyHeading": "entry date",
+    "exitHeading": "extit date"
+    
 }
