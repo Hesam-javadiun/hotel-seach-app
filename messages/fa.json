@@ -1,5 +1,5 @@
 {
-    "title": "اپ جست و جو",
+    "title": " اپ جست و جو هتل",
     "price": "قیمت",
     "userRate": "نمره",
     "description": "توضیحات",
@@ -19,5 +19,8 @@
     "dailyPrice": "قیمت ",
     "none": "بدون مرتب سازی",
     "userRating": "نمره",
-    "quality": "کیفیت"
+    "quality": "کیفیت",
+    "selectQulity": "کیفیت هتل خود را انتخاب کنید",
+    "selectCity": "شهر مورد نظر خود را انتخاب کنید",
+    "soringHeading": "مرتب سازی"
 }

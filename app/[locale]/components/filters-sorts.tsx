@@ -40,38 +40,41 @@ export default function FiltersSortsSelectors({
 
     const qulityFilters = (
         <Selector
-            items={Object.values(HOTEL_QULITY).map((quality) => ({
-                label: t(quality),
+            items={[...Object.values(HOTEL_QULITY), null].map((quality) => ({
+                label: quality ? t(quality) : t("selectQulity"),
                 value: quality,
             }))}
             onChange={qualityChangeHandler}
             value={quality as HOTEL_QULITY | null}
-            emptyLabel={t("emptySelector")}
+            // emptyLabel={t("emptySelector")}
         />
     );
 
     const cityFilters = (
         <Selector
-            items={Object.values(HOTEL_CITIES).map((city) => ({
-                label: t(city),
+            items={[...Object.values(HOTEL_CITIES), null].map((city) => ({
+                label: city ? t(city) : t("selectCity"),
                 value: city,
             }))}
             onChange={cityChangeHandler}
             value={city as HOTEL_CITIES | null}
-            emptyLabel={t("emptySelector")}
+            // emptyLabel={t("emptySelector")}
         />
     );
     console.log("object", [...Object.values(SORT_KEY), null]);
     const sortRadioBtns = (
-        <RadioBtns
-            items={[...Object.values(SORT_KEY), null].map((key) => ({
-                value: key,
-                label: key ? t(key as string) : t("none"),
-                id: key ?? "none",
-            }))}
-            onChange={changeSortKeyHandler}
-            value={sortKey as SORT_KEY}
-        />
+        <>
+            <p>{t("soringHeading")}</p>
+            <RadioBtns
+                items={[...Object.values(SORT_KEY), null].map((key) => ({
+                    value: key,
+                    label: key ? t(key as string) : t("none"),
+                    id: key ?? "none",
+                }))}
+                onChange={changeSortKeyHandler}
+                value={sortKey as SORT_KEY}
+            />
+        </>
     );
 
     const isLoading =
@@ -83,7 +86,7 @@ export default function FiltersSortsSelectors({
                     {qulityFilters}
                     {cityFilters}
                 </div>
-                <div className="flex justify-center">{sortRadioBtns}</div>
+                <div className="flex justify-center gap-4">{sortRadioBtns}</div>
             </ul>
             {isLoading ? <Loading message={t("fetching")} /> : children}
         </>

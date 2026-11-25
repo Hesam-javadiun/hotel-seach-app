@@ -81,7 +81,7 @@ export function formatDate(date: Date | string, locale: string): string {
         year: "numeric",
         month: "2-digit",
         day: "2-digit",
-        calendar: "gregory",
+        calendar: locale === "fa" ? "persian": "gregory",
         timeZone: "UTC",
     });
 

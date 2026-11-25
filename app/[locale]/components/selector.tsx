@@ -9,13 +9,14 @@ import {
 } from "@/components/ui/select";
 
 type SelectorProps<T> = {
-    items: { label: string; value: string }[];
+    items: { label: string; value: string | null }[];
     value: T | null;
     onChange: (newValue: T | null) => void;
-    emptyLabel: string;
+    // emptyLabel: string;
+
 };
 
-export default function Selector<T>({ items, value, onChange, emptyLabel }: SelectorProps<T>) {
+export default function Selector<T>({ items, value, onChange,  }: SelectorProps<T>) {
     return (
         <Select items={items} value={value} onValueChange={onChange}>
             <SelectTrigger className="w-full max-w-48">
@@ -23,7 +24,7 @@ export default function Selector<T>({ items, value, onChange, emptyLabel }: Sele
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
-                    <SelectLabel>{emptyLabel}</SelectLabel>
+                    {/* <SelectLabel>{emptyLabel}</SelectLabel> */}
                     {items.map((item) => (
                         <SelectItem key={item.value} value={item.value}>
                             {item.label}

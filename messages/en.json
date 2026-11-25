@@ -1,5 +1,5 @@
 {
-    "title": "Search App",
+    "title": "Hotel Searching App",
     "price": "price",
     "userRate": "rate",
     "description": "description",
@@ -19,5 +19,8 @@
     "dailyPrice": "daily price",
     "none": "none",
     "userRating": "user rating",
-    "quality": "quality"
+    "quality": "quality",
+    "selectQulity": "select quality",
+    "selectCity": "select city",
+    "soringHeading": "sorting"
 }
