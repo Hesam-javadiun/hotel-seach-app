@@ -15,7 +15,7 @@ type HotelCardProps = {
     price: string;
     city: HotelSearchParamsType["city"];
     quality: HotelSearchParamsType["quality"];
-    userRate: HotelSearchParamsType["userRate"];
+    userRate: HotelSearchParamsType["userRating"];
     entryDate: string;
     exitDate: string;
 };

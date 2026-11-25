@@ -1,10 +1,10 @@
 import { usePathname, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { HotelSearchParamsType } from "@/types/search-param-type";
 
 type UseFilterSearchParam = {
-    filterKey: keyof HotelSearchParamsType;
+    filterKey: string;
 };
 
 export default function useFilterSearchParam<T extends string>({
@@ -15,6 +15,7 @@ export default function useFilterSearchParam<T extends string>({
     const router = useRouter();
     // const queryClient = useQueryClient();
     // const searchParams = params.entries();
+    const [isPending, startTransition] = useTransition();
     const [filter, setFilter] = useState(
         params.has(filterKey) ? params.get(filterKey) : null,
     );
@@ -31,12 +32,12 @@ export default function useFilterSearchParam<T extends string>({
         }
         setFilter(newFilter);
 
-
-
-        router.push(pathName + "?" + newParams.toString());
+        startTransition(() => {
+            router.push(pathName + "?" + newParams.toString());
+        });
         // queryClient.invalidateQueries({queryKey: [QUERY_KEYS.HOTELS, newParams]})
         // window.history.replaceState(null, "", pathName + "?" + newParams.toString());
     };
 
-    return { filter, filterChangeHandler };
+    return { filter, filterChangeHandler, isPending };
 }
