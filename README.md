@@ -52,3 +52,9 @@ pnpm run dev
 ```
 را اجرا کنید
 
+متغیرهای محیطی 
+`.env`
+```
+HOTEL_SERVICE_DOMAIN="http://localhost"
+HOTEL_SERVICE_PORT="3001"
+```
