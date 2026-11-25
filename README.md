@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# مستندات فنی پروژه
+این پروژه یک اپلیکیشن نمایش با داده ماک و جستجوی هتل است که با استفاده از فریم‌ورک Next.js توسعه داده شده است.
 
-## Getting Started
+در طراحی و پیاده‌سازی این پروژه، تمرکز اصلی بر عملکرد مناسب، بهینه‌سازی برای موتورهای جستجو (SEO)، پشتیبانی از چند زبان و مدیریت وضعیت جستجو بوده است.
 
-First, run the development server:
+## نکات فنی و تصمیمات معماری
+
+مهم‌ترین تصمیمات فنی و معماری در این پروژه عبارت‌اند از:
+
+* استفاده از Server Components برای رندر سمت سرور اطلاعات هتل‌ها.
+
+* استفاده از Dynamic Routing با مسیر [locale] برای مدیریت زبان‌های مختلف.
+
+* استفاده از URL Search Parameters برای مدیریت وضعیت جستجو و فیلترها.
+
+* حفظ وضعیت جستجو پس از Refresh صفحه.
+
+* امکان اشتراک‌گذاری URL حاوی پارامترهای جستجو.
+
+* توجه به SEO و ارائه محتوای اولیه از طریق سرور.
+
+
+### رندر سمت سرور (Server-Side Rendering) 
+
+کارت‌های هتل با استفاده از قابلیت Server Components در Next.js و در سمت سرور رندر می‌شوند.
+
+### پشتیبانی از چند زبان (Internationalization)
+
+برای پیاده‌سازی قابلیت چندزبانه، از Dynamic Routing در Next.js و مسیر داینامیک [locale] استفاده شده است.
+
+در این ساختار، زبان فعال از طریق بخش مشخصی از URL تعیین می‌شود.
+
+برای مثال:
+
+‍‍`http:localhost:3000/fa`
+‍`‍http:localhost:3000/fa`
+
+> در حال حاضر داده های دریافتی از سمت سرور برای تمامی فیلترها و مرتب سازی درست بوده اما برای تاریخ ورود و تاریخ خروج به دلیل برخی مشکلات مواجه شده با کتابخانه `react-multiple-date-picker` به نا درستی نمایش داده میشود.
+
+
+## نحوه را اندازی
+برای اجرای پروژه 
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm run backend
+
 ```
+در یک ترمینال جداگانه
+```bash
+pnpm run dev
+```
+را اجرا کنید
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
