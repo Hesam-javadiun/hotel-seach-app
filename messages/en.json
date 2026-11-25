@@ -1,3 +1,11 @@
 {
-    "title": "Search App"
+    "title": "Search App",
+    "price": "price",
+    "userRate": "rate",
+    "description": "description",
+    "fetching": "Hotels is fetching ...",
+    "3stars": "3 Star",
+    "5stars": "5 Star",
+    "4starts": "4 Star",
+    "emptySelector": "Select ... "
 }

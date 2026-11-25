@@ -1,9 +1,11 @@
+import { HOTEL_CITIES } from "@/enum/hotel-cities";
+import { HOTEL_QULITY } from "@/enum/hotel-quality";
+
 export type HotelSearchParamsType = {
     userRate?: string;
     price?: string; 
-    quality?: "3stars" | "5stars" | "4starts";
-    city?: "Tehran" | "Esfehan" | "Tabriz" | "Shiraz" | "Gazvin";
-
+    quality?: HOTEL_QULITY;
+    city?: HOTEL_CITIES;
 } 
 
 

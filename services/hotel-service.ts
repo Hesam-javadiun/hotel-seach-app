@@ -1,4 +1,4 @@
-export async function get(url: string, route: string, initalHeaders?: Headers) {
+export async function get<T>(url: string, route: string, initalHeaders?: Headers) {
     const init = initalHeaders ?? {};
     const headers = new Headers({
         "Content-Type": "application/json",
@@ -15,7 +15,7 @@ export async function get(url: string, route: string, initalHeaders?: Headers) {
         );
     }
 
-    const data = await response.json();
+    const data = await response.json() as T;
     console.log('data', data);
 
     return data;
