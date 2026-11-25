@@ -30,6 +30,9 @@ export default function useFilterSearchParam<T extends string>({
             newParams.delete(filterKey);
         }
         setFilter(newFilter);
+
+
+
         router.push(pathName + "?" + newParams.toString());
         // queryClient.invalidateQueries({queryKey: [QUERY_KEYS.HOTELS, newParams]})
         // window.history.replaceState(null, "", pathName + "?" + newParams.toString());

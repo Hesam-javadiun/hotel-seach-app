@@ -11,9 +11,12 @@
     "entryDate": "تاریخ ورود",
     "exitDate": "تاریخ خروج",
     "city": "شهر",
-    "Tehran" : "تهران",
-    "Esfehan" : "اصفهان",
-    "Tabriz" : "تبریز",
-    "Shiraz" : "شیراز",
-    "Gazvin" : "قزوین"
+    "Tehran": "تهران",
+    "Esfehan": "اصفهان",
+    "Tabriz": "تبریز",
+    "Shiraz": "شیراز",
+    "Gazvin": "قزوین",
+    "dailyPrice": "قیمت ",
+    "none": "بدون مرتب سازی",
+    "userRating": "نمره"
 }
