@@ -15,8 +15,11 @@ import { HotelSearchParamsType } from "@/types/search-param-type";
 import { useQueryClient } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import useFilterSearchParam from "@/hooks/use-filter-search-param";
+import { HOTEL_CITIES } from "@/enum/hotel-cities";
+
 type SelectorProps<T> = {
     items: { label: string; value: string }[];
     value: T | null;
@@ -24,7 +27,7 @@ type SelectorProps<T> = {
     emptyLabel: string;
 };
 
-function Selector<T>({ items, value, onChange , emptyLabel}: SelectorProps<T>) {
+function Selector<T>({ items, value, onChange, emptyLabel }: SelectorProps<T>) {
     return (
         <Select items={items} value={value} onValueChange={onChange}>
             <SelectTrigger className="w-full max-w-48">
@@ -45,46 +48,44 @@ function Selector<T>({ items, value, onChange , emptyLabel}: SelectorProps<T>) {
 }
 
 export default function FiltersSortsSelectors() {
-    const params = useSearchParams();
-    const pathName = usePathname();
-    const router = useRouter();
     const t = useTranslations();
-    // const queryClient = useQueryClient();
-    // const searchParams = params.entries();
-    const [quality, setQuality] = useState(
-        params.has("quality") ? params.get("quality") : null,
-    );
 
-    // const {} = useQueryClient();
+    const { filter: quality, filterChangeHandler: qualityChangeHandler } =
+        useFilterSearchParam({ filterKey: "quality" });
 
-    const qualityChangeHandler = (newQuality: HOTEL_QULITY | null) => {
-        const newParams = new URLSearchParams(params);
-        if (newQuality) {
-            newParams.append("quality", newQuality);
-        } else {
-            newParams.delete("quality");
-        }
-        setQuality(newQuality);
-        router.push(pathName + "?" + newParams.toString());
-        // queryClient.invalidateQueries({queryKey: [QUERY_KEYS.HOTELS, newParams]})
-        // window.history.replaceState(null, "", pathName + "?" + newParams.toString());
-    };
-
-    const qulityItems = Object.values(HOTEL_QULITY).map((quality) => ({
-        label: t(quality),
-        value: quality,
-    }));
+    const { filter: city, filterChangeHandler: cityChangeHandler } =
+        useFilterSearchParam({ filterKey: "city" });
 
     const qulityFilters = (
         <Selector
-            items={qulityItems}
+            items={Object.values(HOTEL_QULITY).map((quality) => ({
+                label: t(quality),
+                value: quality,
+            }))}
             onChange={qualityChangeHandler}
             value={quality as HOTEL_QULITY | null}
             emptyLabel={t("emptySelector")}
         />
     );
 
-    return <ul className="flex wrap p-4 justify-center">{qulityFilters}</ul>;
+    const cityFilters = (
+        <Selector
+            items={Object.values(HOTEL_CITIES).map((city) => ({
+                label: t(city),
+                value: city,
+            }))}
+            onChange={cityChangeHandler}
+            value={city as HOTEL_CITIES | null}
+            emptyLabel={t("emptySelector")}
+        />
+    );
+
+
+
+    return (
+        <ul className="flex wrap p-4 justify-center gap-4">
+            {qulityFilters}
+            {cityFilters}
+        </ul>
+    );
 }
-
-

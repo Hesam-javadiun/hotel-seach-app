@@ -10,7 +10,7 @@ export default function Hotels({ hotelDataPromise }: HotelsProps) {
     const hotels = use(hotelDataPromise);
 
     return (
-        <ul className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-4 grow overflow-y-auto p-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 grow overflow-y-auto p-4">
             {hotels!.map((hotel) => (
                 <HotelCard
                     key={hotel.id}
@@ -20,6 +20,8 @@ export default function Hotels({ hotelDataPromise }: HotelsProps) {
                     quality={hotel.quality}
                     title={hotel.hotelName}
                     userRate={hotel.userRating.toString()}
+                    entryDate={hotel.entryDate}
+                    exitDate={hotel.exitDate}
                 />
             ))}
         </ul>

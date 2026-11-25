@@ -7,5 +7,13 @@
     "3stars": "3 ستاره",
     "5stars": "5 ستاره",
     "4starts": "4 ستاره",
-    "emptySelector": "انتخاب کنید"
+    "emptySelector": "انتخاب کنید",
+    "entryDate": "تاریخ ورود",
+    "exitDate": "تاریخ خروج",
+    "city": "شهر",
+    "Tehran" : "تهران",
+    "Esfehan" : "اصفهان",
+    "Tabriz" : "تبریز",
+    "Shiraz" : "شیراز",
+    "Gazvin" : "قزوین"
 }

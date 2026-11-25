@@ -7,5 +7,13 @@
     "3stars": "3 Star",
     "5stars": "5 Star",
     "4starts": "4 Star",
-    "emptySelector": "Select ... "
+    "entryDate": "entry date",
+    "exitDate": "exit date",
+    "emptySelector": "Select ... ",
+    "city": "city",
+    "Tehran": "Tehran",
+    "Esfehan": "Esfehan",
+    "Tabriz": "Tabriz",
+    "Shiraz": "Shiraz",
+    "Gazvin": "Gazvin"
 }
